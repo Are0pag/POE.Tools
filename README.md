@@ -12,8 +12,7 @@
 
 ### POE.Tools Module
 #### Requarements: 
-- [POE.Systems.Grid.Generation Module](https://github.com/Are0pag/GridGeneration)
-- [POE.Tools Module](https://github.com/Are0pag/GridGeneration)
+- UniTask
 
 #### Description:
 
