@@ -1,6 +1,6 @@
 {
   "name": "POE.Tools",
-  "rootNamespace": "",
+  "rootNamespace": "Scripts.Tools",
   "references": [
     "GUID:f51ebe6a0ceec4240a699833d6309b23"
   ],

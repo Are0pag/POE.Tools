@@ -16,11 +16,7 @@ namespace Scripts.Tools.CustomEdit
 
         #endregion
         
-        
         public const string UNITS_DATA_PATH = RootDN.GAME_OBJECTS_DATA_PATH + "UnitSystemData/";
-
-
-
         public const string SERVICES_PATH = RootDN.CEM_ROOT + "Services/";
     }
 

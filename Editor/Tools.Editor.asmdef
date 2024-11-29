@@ -1,6 +1,6 @@
 {
     "name": "POE.Tools.Editor",
-    "rootNamespace": "",
+    "rootNamespace": "Scripts.Tools.CustomEdit",
     "references": [],
     "includePlatforms": [
         "Editor"
