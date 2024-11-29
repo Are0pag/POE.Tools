@@ -6,31 +6,40 @@ namespace Scripts.Tools.CustomEdit
     /// </summary>
     static public class DirectoryNames
     {
+        public const string SLASH = "/";
+
+        #region Grid
+
+        public const string GRID_CELLS_PATH = RootDN.GAME_OBJECTS_DATA_PATH + "GridCellData/";
+        public const string GRID_SYSTEM_DATA_PATH = RootDN.SYSTEMS_DATA_PATH + "GridSettings/";
+        public const string GRID_STATS_DATA_PATH = RootDN.STATS_DATA_PATH + "GridStats/";
+
+        #endregion
+        
+        
+        public const string UNITS_DATA_PATH = RootDN.GAME_OBJECTS_DATA_PATH + "UnitSystemData/";
+
+
+
+        public const string SERVICES_PATH = RootDN.CEM_ROOT + "Services/";
+    }
+
+
+    static internal class RootDN
+    {
         /// <summary>
         /// "GameDataProviders/" - root Game Data Providers directory path
         /// </summary>
-        private const string GDP_ROOT = "GameDataProviders/";
-        public const string SLASH = "/";
-
-        public const string GAME_OBJECTS_DATA_PATH = GDP_ROOT + "GameObjects/";
-        public const string STATS_DATA_PATH = GDP_ROOT + "Stats/";
-        public const string SYSTEMS_DATA_PATH = GDP_ROOT + "SystemsData/";
+        internal const string GDP_ROOT = "GameDataProviders/";
         
-        /// <summary>
-        /// Grid
-        /// </summary>
-        public const string GRID_CELLS_PATH = GAME_OBJECTS_DATA_PATH + "GridCellData/";
-        public const string GRID_SYSTEM_DATA_PATH = SYSTEMS_DATA_PATH + "GridSettings/";
+        internal const string GAME_OBJECTS_DATA_PATH = GDP_ROOT + "GameObjects/";
+        internal const string STATS_DATA_PATH = GDP_ROOT + "Stats/";
+        internal const string SYSTEMS_DATA_PATH = GDP_ROOT + "SystemsData/";
         
-        
-        public const string UNITS_DATA_PATH = GAME_OBJECTS_DATA_PATH + "UnitSystemData/";
-
         /// <summary>
         /// "CustomEditorMenu/" - root directory name for Custom Editor Menu
         /// </summary>
-        public const string CEM_ROOT = "CustomEditorMenu/";
-
-        public const string SERVICES_PATH = CEM_ROOT + "Services/";
+        internal const string CEM_ROOT = "CustomEditorMenu/";
     }
 
     static internal class PathExtension
