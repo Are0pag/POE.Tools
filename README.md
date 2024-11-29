@@ -15,6 +15,7 @@
 - UniTask
 
 #### Description:
+Provides frequently used logic for the project
 
 #### [Code Style](https://github.com/Are0pag/POE.CodeStyle)
  
