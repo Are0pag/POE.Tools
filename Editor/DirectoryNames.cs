@@ -16,8 +16,8 @@ namespace Scripts.Tools.CustomEdit
 
         #endregion
         
+        public const string GET_COMPONENT_PATH = RootDN.CEM_ROOT + "GetComponents/";
         public const string UNITS_DATA_PATH = RootDN.GAME_OBJECTS_DATA_PATH + "UnitSystemData/";
-        public const string SERVICES_PATH = RootDN.CEM_ROOT + "Services/";
     }
 
 
@@ -44,6 +44,4 @@ namespace Scripts.Tools.CustomEdit
             return value + "/";
         }
     }
-    
-    
 }
