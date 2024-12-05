@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using POE.Tools.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,18 +15,10 @@ namespace Scripts.Tools.CustomEdit
         }
         
         static internal void InitializeComponents() {
-            foreach (var gameObject in GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None)) {
-                foreach (var monoBehaviour in gameObject.GetComponents<MonoBehaviour>()) {
-                    if (monoBehaviour == null) 
-                        continue;
-
-                    ProcessFields(monoBehaviour);
-                }
-            }
+            AttributeBuildHelper.GetObjectsFromScene(ProcessFields);
         }
 
         static private void ProcessFields(MonoBehaviour monoBehaviour) {
-            // Process fields with [GetComponent] attribute
             var fields = monoBehaviour.GetType()
                 .GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
                 .Where(f => 
@@ -33,14 +26,13 @@ namespace Scripts.Tools.CustomEdit
                     && Attribute.IsDefined((MemberInfo)f, typeof(SerializeField)));
 
             foreach (var field in fields) {
-                if (IsFieldInitialized(field, field.GetValue(monoBehaviour))) 
-                    return;
-                        
-                Initialize(field.FieldType, monoBehaviour, field);
+                if (AttributeBuildHelper.IsFieldNeedsToInitialize(field, monoBehaviour))     
+                    Initialize(monoBehaviour, field);
             }
         }
 
-        static private void Initialize(Type fieldType, MonoBehaviour monoBehaviour, FieldInfo field) {
+        static private void Initialize(MonoBehaviour monoBehaviour, FieldInfo field) {
+            var fieldType = field.FieldType;
             if (typeof(Component).IsAssignableFrom(fieldType)) {
                 var findComponentMethod = typeof(ComponentSearcher)
                     .GetMethod(nameof(ComponentSearcher.TryFindComponentInChildsRecursive))
@@ -61,13 +53,6 @@ namespace Scripts.Tools.CustomEdit
             else {
                 Debug.LogWarning($"[GetComponent] Field {field.Name} is not a Component type.");
             }
-        }
-
-        static private bool IsFieldInitialized(FieldInfo field, object fieldValue) {
-            if (fieldValue == null)
-                return false;
-
-            return !field.FieldType.IsValueType || !fieldValue.Equals(Activator.CreateInstance(field.FieldType));
         }
     }
 }

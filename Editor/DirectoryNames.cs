@@ -16,7 +16,10 @@ namespace Scripts.Tools.CustomEdit
 
         #endregion
         
-        public const string GET_COMPONENT_PATH = RootDN.CEM_ROOT + "GetComponents/";
+        public const string GRID_VIEW_SETTINGS_PATH = RootDN.SYSTEMS_DATA_PATH + "GridViewSettings/";
+        
+        public const string GET_COMPONENT_PATH = RootDN.CEM_ROOT + "GetComponents";
+        public const string FIND_OBJECT_IN_SCENE_PATH = RootDN.CEM_ROOT + "FindObjectInScene";
         public const string UNITS_DATA_PATH = RootDN.GAME_OBJECTS_DATA_PATH + "UnitSystemData/";
     }
 

@@ -8,5 +8,10 @@ namespace Scripts.Tools.CustomEdit
         static private void GetComponents() {
             GetComponentInitializer.InitializeComponents();
         }
+
+        [MenuItem(DirectoryNames.FIND_OBJECT_IN_SCENE_PATH)]
+        static private void FindObjectInScene() {
+            FindInSceneInitializer.InitializeComponents();
+        }
     }
 }
