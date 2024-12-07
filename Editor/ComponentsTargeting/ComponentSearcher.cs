@@ -4,9 +4,7 @@ using UnityEngine;
 
 namespace Scripts.Tools.CustomEdit
 {
-
-    static public class ComponentSearcher
-    {
+    static public class ComponentSearcher {
         static public TSearchingComponent TryFindComponentInChildsRecursive<TSearchingComponent>(this Transform parent)
             where TSearchingComponent : Component 
         {
@@ -26,7 +24,7 @@ namespace Scripts.Tools.CustomEdit
                 ? component 
                 : (from Transform child in parent 
                     select child.TryFindComponentInChildsRecursive<TSearchingComponent>())
-                    .FirstOrDefault(comp => comp != null);
+                .FirstOrDefault(comp => comp != null);
         }
     }
 }

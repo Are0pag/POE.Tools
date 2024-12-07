@@ -1,0 +1,19 @@
+{
+    "name": "POE.Tools.Attributes.Editor",
+    "rootNamespace": "Scripts.Tools.Attributes.CustomEdit",
+    "references": [
+        "GUID:2b2277e6ef464a8418a3c0c9d600867c",
+        "GUID:83f0dae0f5896b44db30f476d1b78d79"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

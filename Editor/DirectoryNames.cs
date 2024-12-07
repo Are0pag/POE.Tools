@@ -19,12 +19,10 @@ namespace Scripts.Tools.CustomEdit
         public const string GRID_VIEW_SETTINGS_PATH = RootDN.SYSTEMS_DATA_PATH + "GridViewSettings/";
         
         public const string GET_COMPONENT_PATH = RootDN.CEM_ROOT + "GetComponents";
-        public const string FIND_OBJECT_IN_SCENE_PATH = RootDN.CEM_ROOT + "FindObjectInScene";
-        public const string UNITS_DATA_PATH = RootDN.GAME_OBJECTS_DATA_PATH + "UnitSystemData/";
     }
 
 
-    static internal class RootDN
+    static public class RootDN
     {
         /// <summary>
         /// "GameDataProviders/" - root Game Data Providers directory path
@@ -38,7 +36,7 @@ namespace Scripts.Tools.CustomEdit
         /// <summary>
         /// "CustomEditorMenu/" - root directory name for Custom Editor Menu
         /// </summary>
-        internal const string CEM_ROOT = "CustomEditorMenu/";
+        public const string CEM_ROOT = "CustomEditorMenu/";
     }
 
     static internal class PathExtension

@@ -1,4 +1,4 @@
-namespace Scripts.Tools.CustomEdit
+namespace Scripts.Tools.Attributes
 {
     public enum ExecutingMode {
         IsPlayingOnly,
