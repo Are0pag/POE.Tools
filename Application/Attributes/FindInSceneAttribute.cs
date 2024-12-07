@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-namespace Scripts.Tools.CustomEdit
+namespace Scripts.Tools.Attributes
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-    public class FindInSceneAttribute :  PropertyAttribute
+    public class FindInSceneAttribute : PropertyAttribute
     {
         
     }
