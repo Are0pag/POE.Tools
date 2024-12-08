@@ -18,6 +18,22 @@ namespace Scripts.Tools.Attributes.CustomEdit
             }
         }
 
+        
+        internal object GetTargetFieldValue<TInstance>(TInstance instance, FieldInfo fieldInfo) 
+            where TInstance : class
+        {
+            if (GenericMethodMaker.Make(GetTypeOfMethodContainer(), fieldInfo) is { } method) {
+                if (method.Invoke(null, SetParametersForRuntimeGenericMethod(instance)) is { } result)
+                    return result;
+                
+                Debug.Log($"{nameof(GetTargetFieldValue)} from {nameof(AttributeInitializer)} returned null.");
+                return null;
+            }
+            Debug.Log($"{nameof(GetTargetFieldValue)} from {nameof(AttributeInitializer)} returned null.");
+            return null;
+        }
+
+        
         protected void ManageInstanceFieldsRecursive<TInstance>(TInstance instance) 
             where TInstance : class
         {
@@ -30,11 +46,7 @@ namespace Scripts.Tools.Attributes.CustomEdit
                     if (!FieldInitializeConditions.IsFieldNeedsToInitialize(instance, fieldInfo)) 
                         continue;
                     
-                    if (GenericMethodMaker.Make(GetTypeOfMethodContainer(), fieldInfo) is {} method)
-                        if (method.Invoke(null, SetParametersForRuntimeGenericMethod(instance)) is {} result)
-                            fieldInfo.SetValue(instance, result);
-                    
-                    //Debug.Log($"!ATTRIBUTE_TARGET! \n declaringType: {fieldInfo.DeclaringType?.Name}, \n name: {fieldInfo.Name}"); 
+                    fieldInfo.SetValue(instance, GetTargetFieldValue(instance, fieldInfo));
                     continue;
                 }
                 
