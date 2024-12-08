@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Scripts.Tools.Attributes.CustomEdit
 {
     static internal class Controller
