@@ -1,17 +1,12 @@
 using System.Reflection;
 using Scripts.Tools.Attributes;
-using UnityEditor;
 using UnityEngine;
 
 namespace Scripts.Tools.CustomEdit
 {
-    [CustomEditor(typeof(MonoBehaviour), true)]
-    internal class InspectorButtonDrawer : Editor
+    static public class InspectorButtonDrawer
     {
-        public override void OnInspectorGUI() {
-            if (target is not MonoBehaviour monoBehaviour) 
-                return;
-
+        static public void ManageMethodsButtons(MonoBehaviour monoBehaviour) {
             var methods = monoBehaviour.GetType()
                 .GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.DeclaredOnly);
 
@@ -23,11 +18,9 @@ namespace Scripts.Tools.CustomEdit
                 if (IsEnabled(attribute.Mode) && GUILayout.Button(buttonLabel))
                     method.Invoke(monoBehaviour, null);
             }
-
-            DrawDefaultInspector();
         }
 
-        private bool IsEnabled(ExecutingMode executingMode) {
+        static private bool IsEnabled(ExecutingMode executingMode) {
             if (executingMode == ExecutingMode.Both)
                 return true;
             
