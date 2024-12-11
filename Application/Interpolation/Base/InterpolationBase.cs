@@ -6,21 +6,27 @@ using UnityEngine;
 
 namespace Scripts.Tools.Interpolation
 {
-    public delegate UniTask InterpolateDelegate<in TInstance, TValueType>(TInstance targetInstance, PropertyInfo targetProperty, InterpolationArgs<TValueType> args);
-    
-    public abstract class InterpolationBase<TValueType> : IAsyncOperation
+    public abstract class InterpolationBase<TInstance, TValueType> : IAsyncOperation
     {
-        public CancellationTokenSource CancellationTokenSource { get; set; } = new();
+        protected readonly TInstance _targetInstance; 
+        protected readonly PropertyInfo _targetProperty;
+        protected readonly InterpolationArgs<TValueType> _args;
 
-        public async UniTask InterpolateAsync<TInstance>(TInstance targetInstance, PropertyInfo targetProperty, InterpolationArgs<TValueType> args) {
+        protected InterpolationBase(TInstance targetInstance, PropertyInfo targetProperty, InterpolationArgs<TValueType> args) {
+            _targetInstance = targetInstance;
+            _targetProperty = targetProperty;
+            _args = args;
+        }
+        
+        public async UniTask RunAsyncOperation(CancellationTokenSource cts) {
             var stopWatch = Stopwatch.StartNew();
             float elapsedTime = 0f;
-            while (stopWatch.Elapsed.Seconds < args.ByTime) {
-                targetProperty.SetValue(targetInstance, Lerp(args.StartValue, args.FinalValue, Mathf.Clamp01(elapsedTime += Time.deltaTime / args.ByTime)));
-                await UniTask.Yield(CancellationTokenSource.Token);
+            while (stopWatch.Elapsed.Seconds < _args.ByTime) {
+                _targetProperty.SetValue(_targetInstance, Lerp(_args.StartValue, _args.FinalValue, Mathf.Clamp01(elapsedTime += Time.deltaTime / _args.ByTime)));
+                await UniTask.Yield(cts.Token);
             }
             // Ensure the final value is applied at the end 
-            targetProperty.SetValue(targetInstance, args.FinalValue);
+            _targetProperty.SetValue(_targetInstance, _args.FinalValue);
         }
 
         protected abstract TValueType Lerp(TValueType startValue, TValueType finalValue, float t);

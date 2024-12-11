@@ -1,9 +1,10 @@
 using System.Threading;
+using Cysharp.Threading.Tasks;
 
 namespace Scripts.Tools.Interpolation
 {
     public interface IAsyncOperation
     {
-        CancellationTokenSource CancellationTokenSource { get; set; }
+        UniTask RunAsyncOperation(CancellationTokenSource cts);
     }
 }
