@@ -9,6 +9,11 @@ namespace Scripts.Tools.Interpolation
             : base(targetInstance, targetProperty, args) {
         }
 
+        public InterpolationLinearVector3(TInstance targetInstance, PropertyInfo targetProperty, Vector3 startValue, Vector3 finalValue, float byTime)
+            : base(targetInstance, targetProperty, startValue, finalValue, byTime) {
+            
+        }
+
         protected override Vector3 Lerp(Vector3 startValue, Vector3 finalValue, float t) {
             return Vector3.Lerp(startValue, finalValue, t);
         }

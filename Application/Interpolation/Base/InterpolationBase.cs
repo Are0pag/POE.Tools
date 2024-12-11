@@ -17,6 +17,17 @@ namespace Scripts.Tools.Interpolation
             _targetProperty = targetProperty;
             _args = args;
         }
+
+        protected InterpolationBase(TInstance targetInstance, PropertyInfo targetProperty, TValueType startValue, TValueType finalValue, float byTime) {
+            _targetInstance = targetInstance;
+            _targetProperty = targetProperty;
+
+            _args = new InterpolationArgs<TValueType> {
+                ByTime = byTime,
+                StartValue = startValue,
+                FinalValue = finalValue,
+            };
+        }
         
         public async UniTask RunAsyncOperation(CancellationTokenSource cts) {
             var stopWatch = Stopwatch.StartNew();
