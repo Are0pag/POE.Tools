@@ -8,8 +8,6 @@ namespace Scripts.Tools.Attributes.CustomEdit
 {
     internal class GetComponentAttributeInitializer : AttributeInitializer
     {
-        protected UnityEngine.Transform _cachedParentTransform;
-        
         protected override bool IsTargetAttributeDefined(FieldInfo fieldInfo) {
             return Attribute.IsDefined(fieldInfo, typeof(GetComponentAttribute));
         }

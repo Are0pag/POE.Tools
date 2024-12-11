@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Scripts.Tools.Attributes
 {
     /// <summary>
-    /// If name of button is not specified, attribute takes original method name
+    /// If name of button is not specified, attribute takes original method name, if executing mode is not specified, attribute set ExecutingMode.Both
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
     public class InspectorButtonAttribute : PropertyAttribute
@@ -19,6 +19,11 @@ namespace Scripts.Tools.Attributes
 
         public InspectorButtonAttribute(ExecutingMode executingMode) {
             Mode = executingMode;
+        }
+
+        public InspectorButtonAttribute(string buttonLabel) {
+            ButtonLabel = buttonLabel;
+            Mode = ExecutingMode.Both;
         }
 
         public InspectorButtonAttribute() {
