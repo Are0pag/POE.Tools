@@ -6,21 +6,15 @@ using UnityEngine.Networking;
 
 namespace Scripts.Tools.Interpolation
 {
-    public delegate UniTask TaskAction(UniTask task);
-    
     public class MiddleWareAsync
     {
         protected readonly UniTask _task;
-        protected readonly TaskAction _taskAction;
-        //protected readonly CancellationTokenSource _cts;
+        protected readonly CancellationTokenSource _cts;
+        protected readonly Action _action;
 
-        public MiddleWareAsync(UniTask task
-            //, CancellationTokenSource cancellationTokenSource
-            ) {
-            _task = task;
-            //_cts = cancellationTokenSource;
+        public MiddleWareAsync(Action action) {
+            _action = action;
         }
-        
         
 
         public void Cancel() {
