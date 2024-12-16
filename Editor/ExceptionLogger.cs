@@ -5,7 +5,7 @@ namespace Scripts.Tools.CustomEdit
 {
     static public class ExceptionLogger
     {
-        static public void Log(Exception exception, object source = null) {
+        static public void Log(this Exception exception, object source = null) {
             Debug.Log($"" +
                       $"{exception.GetType().Name}" +
                       $" from {source?.GetType().Name}" +
