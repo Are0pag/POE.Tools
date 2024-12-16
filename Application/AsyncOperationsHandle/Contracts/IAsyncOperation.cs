@@ -1,7 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace Scripts.Tools.Interpolation
+namespace Scripts.Tools.AsyncOperationsHandle
 {
     public interface IAsyncOperation
     {

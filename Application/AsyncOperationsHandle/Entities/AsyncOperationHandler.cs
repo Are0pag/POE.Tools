@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Scripts.Tools.CustomEdit;
 
-namespace Scripts.Tools.Interpolation
+namespace Scripts.Tools.AsyncOperationsHandle
 {
     public class AsyncOperationHandler : IAsyncOperationHandler
     {

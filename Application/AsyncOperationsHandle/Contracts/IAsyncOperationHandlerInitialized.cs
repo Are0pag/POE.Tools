@@ -1,4 +1,4 @@
-namespace Scripts.Tools.Interpolation
+namespace Scripts.Tools.AsyncOperationsHandle
 {
     public interface IAsyncOperationHandlerInitialized : IAsyncOperationHandler
     {
