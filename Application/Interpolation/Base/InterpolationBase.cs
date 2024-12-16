@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using System.Reflection;
@@ -41,5 +42,10 @@ namespace Scripts.Tools.Interpolation
         }
 
         protected abstract TValueType Lerp(TValueType startValue, TValueType finalValue, float t);
+    }
+
+    public class InterpolationCreator
+    {
+        
     }
 }

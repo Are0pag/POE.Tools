@@ -1,8 +1,8 @@
-using Scripts.Tools.CustomEdit.Inspector;
+using Scripts.Tools;
 using UnityEditor;
 using UnityEngine;
 
-namespace Scripts.Tools.CustomEdit
+namespace Scripts.Tools.CustomEdit.Inspector
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(MonoBehaviour), true)]
@@ -13,7 +13,14 @@ namespace Scripts.Tools.CustomEdit
                 return;
 
             InspectorButtonDrawer.ManageMethodsButtons(monoBehavior);
+            
+            EditorGUILayout.BeginHorizontal();
             NamedButton.DrawButton(monoBehavior);
+            MoveComponentButtons.DrawButtons(monoBehavior);
+            EditorGUILayout.EndHorizontal();
+            
+            /*if (monoBehavior.transform.root.TryGetComponent(out Canvas canvas) || monoBehavior.transform.GetComponentsInChildren<Canvas>().Length > 0)
+                UIHelpButtons.DrawAndInitButtons(monoBehavior);*/
             
             DrawDefaultInspector();
         }

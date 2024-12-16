@@ -5,16 +5,12 @@ namespace Scripts.Tools.CustomEdit
 {
     static public class ExceptionLogger
     {
-        static public void Log(Exception exception) {
-            if (exception is OperationCanceledException)
-                Debug.Log($"{nameof(OperationCanceledException)} from {exception.TargetSite}");
-
-            if (exception is MissingReferenceException) {
-                Debug.Log($"{nameof(MissingReferenceException)} from {exception.StackTrace}");
-                return;
-            }
-
-            Debug.Log(exception.StackTrace);
+        static public void Log(Exception exception, object source = null) {
+            Debug.Log($"" +
+                      $"{exception.GetType().Name}" +
+                      $" from {source?.GetType().Name}" +
+                      $" || Namespace: {source?.GetType().Namespace}" +
+                      $" || Assembly: {source?.GetType().Assembly.GetName().Name}");
         }
     }
 }

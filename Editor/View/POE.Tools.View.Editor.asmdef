@@ -1,12 +1,11 @@
 {
-    "name": "POE.Tools.Inspector.Editor",
+    "name": "POE.Tools.View.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:3c277b991b7d4a0ab63a7afe7b07a259",
+        "GUID:5108061786d846e395b8291cf768ef0c",
         "GUID:83f0dae0f5896b44db30f476d1b78d79",
-        "GUID:2b2277e6ef464a8418a3c0c9d600867c",
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:5108061786d846e395b8291cf768ef0c"
+        "GUID:2b2277e6ef464a8418a3c0c9d600867c"
     ],
     "includePlatforms": [
         "Editor"

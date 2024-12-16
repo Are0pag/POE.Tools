@@ -8,9 +8,9 @@ namespace Scripts.Tools
     {
         public readonly Action<TType> Initialize;
         public readonly string ParentName;
+        public readonly UnityEngine.Transform Parent;
         
         protected readonly string _nameOfGameObject;
-        
         public string NameOfGameObject {
             get {
                 if (string.IsNullOrEmpty(_nameOfGameObject))
@@ -18,6 +18,10 @@ namespace Scripts.Tools
                 
                 return _nameOfGameObject;
             }
+        }
+
+        public CreationArgs(UnityEngine.Transform parent) {
+            Parent = parent;
         }
 
         public CreationArgs(Action<TType> initialize, string parentName, string nameOfGameObject) {

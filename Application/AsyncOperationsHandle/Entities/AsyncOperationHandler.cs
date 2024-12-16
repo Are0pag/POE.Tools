@@ -5,12 +5,12 @@ using Scripts.Tools.CustomEdit;
 
 namespace Scripts.Tools.Interpolation
 {
-    public class MiddleWareAsync
+    public class AsyncOperationHandler : IAsyncOperationHandler
     {
         protected readonly IAsyncOperation _asyncOperation;
         protected readonly CancellationTokenSource _cancellationTokenSource;
 
-        public MiddleWareAsync(IAsyncOperation asyncOperation) {
+        public AsyncOperationHandler(IAsyncOperation asyncOperation) {
             _asyncOperation = asyncOperation;
             _cancellationTokenSource = new CancellationTokenSource();
         }
