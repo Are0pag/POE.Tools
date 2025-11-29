@@ -10,24 +10,31 @@ namespace Scripts.Tools.AsyncOperationsHandle
         protected readonly IAsyncOperation _asyncOperation;
         protected readonly CancellationTokenSource _cancellationTokenSource;
 
+        public bool IsRunning;
+
         public AsyncOperationHandler(IAsyncOperation asyncOperation) {
             _asyncOperation = asyncOperation;
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
-        public void Cancel() {
-           _cancellationTokenSource.Cancel();
-        }
-
         public async UniTask RunAsync() {
             try {
+                IsRunning = true;
                 await _asyncOperation.RunAsyncOperation(_cancellationTokenSource);
             }
             catch (Exception exception) {
-#if UNITY_EDITOR
-                ExceptionLogger.Log(exception);
-#endif
+                #if UNITY_EDITOR
+                exception.Log(this);
+                #endif
             }
+            finally {
+                IsRunning = false;
+            }
+        }
+
+        public void Cancel() {
+            IsRunning = false;
+            _cancellationTokenSource.Cancel();
         }
     }
 }

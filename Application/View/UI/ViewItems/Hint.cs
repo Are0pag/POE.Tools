@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using Scripts.Tools.Attributes;
 using TMPro;
@@ -21,7 +22,7 @@ namespace Scripts.Tools.View
         protected void OnEnable() {
             transform.position = new Vector3(transform.position.x, transform.position.y - _jumpComponent.JumpHeight, transform.position.z);
             _jumpComponent.Jump();
-            _scaleComponent.SetScaleAnimation();
+            
             
             Invoke(nameof(StartDisableAnimation), LiveTime);
         }
@@ -48,6 +49,4 @@ namespace Scripts.Tools.View
         }
         #endif
     }
-    
-    
 }

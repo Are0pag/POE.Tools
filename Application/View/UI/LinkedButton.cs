@@ -1,7 +1,6 @@
 using Scripts.Tools.Attributes;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Scripts.Tools.View

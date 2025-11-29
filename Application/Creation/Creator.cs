@@ -32,7 +32,8 @@ namespace Scripts.Tools
                 }
                 
                 if (!string.IsNullOrEmpty(creationArgs.ParentName))
-                    go.transform.parent = GameObject.Find(creationArgs.ParentName).transform;
+                    if (GameObject.Find(creationArgs.ParentName) is not {} founded)
+                        go.transform.parent = go.transform;
             }
         }
         #endif

@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Scripts.Tools.CustomEdit.View
 {
-    [CustomEditor(typeof(LinkedButton))]
-    public class LinkedButtonEditor : ButtonEditor
+    [CustomEditor(typeof(LinkedButton), true)]
+    internal class LinkedButtonEditor : ButtonEditor
     {
         private SerializedProperty _imageProp;
         private SerializedProperty _textProp;
@@ -19,12 +19,7 @@ namespace Scripts.Tools.CustomEdit.View
 
         public override void OnInspectorGUI() {
             AddCustomSerializeFields();
-            EditorGUILayout.Space();
             base.OnInspectorGUI();
-        }
-
-        private void Construct() {
-            //Creator.CreateMonoBehavior()
         }
 
         private void AddCustomSerializeFields() {
@@ -36,6 +31,7 @@ namespace Scripts.Tools.CustomEdit.View
             EditorGUILayout.PropertyField(_textProp, new GUIContent("Text"));
 
             serializedObject.ApplyModifiedProperties();
+            EditorGUILayout.Space();
         }
     }
 }
